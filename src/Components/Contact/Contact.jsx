@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const Contact = () => {
-  const [submissionStatus, setSubmissionStatus] = useState(null);
   const elementRef = useRef(null)
   const [isVisible, setIsVisible] = useState(true)
   
@@ -25,92 +24,45 @@ const Contact = () => {
     };
   }, []);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    setSubmissionStatus('submitting');
-
-    const form = event.target;
-    const data = new FormData(form);
-
-    try {
-      const response = await fetch('/api/submit', {
-        method: 'POST',
-        body: data,
-      });
-
-      if (response.ok) {
-        setSubmissionStatus('success');
-        form.reset();
-      } else {
-        setSubmissionStatus('error');
-        const errorData = await response.json();
-        console.error('Erro na resposta do servidor:', errorData);
-      }
-    } catch (error) {
-      console.error('Erro ao enviar o formulário:', error);
-      setSubmissionStatus('error');
-    }
-  };
-
   return (
-    <div ref={elementRef} className={`h-screen w-full flex flex-col bg-white dark:bg-black items-center justify-center relative transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-      <h2 className="text-5xl font-bold mb-6 text-center text-black dark:text-white">CONTATO</h2>
-      <form data-vercel-form action="/api/submit" method="POST" onSubmit={handleSubmit}>
-        <div className="mb-4 lg:w-[800px] md:w-[550px] w-[300px]">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Nome:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            className="w-full p-3 rounded-full transition-colors duration-500 bg-white focus:bg-black border border-black focus:text-white dark:bg-black dark:border-white dark:text-white dark:focus:bg-white focus:outline-none focus:border-blue-500 dark:focus:text-black"
-          />
-        </div>
+  <div
+    ref={elementRef}
+    className={`h-screen w-full flex flex-col bg-white dark:bg-black items-center justify-center relative transition-opacity duration-1000 ${
+      isVisible ? 'opacity-100' : 'opacity-0'
+    }`}
+  >
+    <h2 className="text-5xl font-bold mb-6 text-center text-black dark:text-white">
+      CONTATO
+    </h2>
 
-        <div className="mb-4 lg:w-[800px] md:w-[550px] w-[300px]">
-          <label htmlFor="email" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            className="w-full p-3 rounded-full transition-colors duration-500 bg-white focus:bg-black border border-black focus:text-white dark:bg-black dark:border-white  dark:text-white dark:focus:bg-white focus:outline-none focus:border-blue-500 dark:focus:text-black"
-          />
-        </div>
-
-        <div className="mb-6 lg:w-[800px] md:w-[550px] w-[300px]">
-          <label htmlFor="message" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Mensagem:</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="5"
-            required
-            className="w-full p-3 rounded-md transition-colors duration-500 bg-white focus:bg-black border border-black focus:text-white dark:bg-black dark:border-white  dark:text-white dark:focus:bg-white focus:outline-none focus:border-blue-500 dark:focus:text-black resize-none"
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          className="w-full text-white bg-black dark:text-black dark:bg-white hover:bg-gray-600  font-bold py-3 px-4 rounded-md transition duration-200"
-          disabled={submissionStatus === 'submitting'}
-        >
-          {submissionStatus === 'submitting' ? 'Enviando...' : 'Enviar Mensagem'}
-        </button>
-
-        {submissionStatus === 'success' && (
-          <p className="mt-4 text-green-400 text-center">Mensagem enviada com sucesso!</p>
-        )}
-        {submissionStatus === 'error' && (
-          <p className="mt-4 text-red-400 text-center">Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente.</p>
-        )}
-      </form>
-      <div className='flex flex-col mt-20 mb-0'>
-        <p className='text-center text-gray-600'>© 2025 Gabriel Kazakevicius.</p>
-        <p className='text-center text-gray-600'>Todos os Direitos Reservados</p>
-      </div>
+    <div className="flex items-center space-x-2 mb-2">
+      <i className="devicon-google-plain text-[16px] sm:text-3xl filter dark:invert dark:brightness-200"></i>
+      <p className="font-extralight text-[16px] sm:text-3xl text-black dark:text-white">
+        gabriel.kazak@gmail.com
+      </p>
     </div>
-  );
+
+    <div className="flex items-center space-x-2 mb-2">
+      <i className="devicon-linkedin-plain text-[16px] sm:text-3xl filter dark:invert dark:brightness-200"></i>
+      <a href='https://www.linkedin.com/in/gabriel-kazakevicius' className="font-extralight text-[16px] sm:text-3xl text-black dark:text-white">
+      linkedin.com/in/gabriel-kazakevicius
+      </a>
+    </div>
+
+    <div className="flex items-center space-x-2 mb-2">
+      <i className="devicon-github-original text-[16px] sm:text-3xl filter dark:invert dark:brightness-200"></i>
+      <a href='https://github.com/gabrielkazak' className="font-extralight text-[16px] sm:text-3xl text-black dark:text-white">
+      github.com/gabrielkazak
+      </a>
+    </div>
+
+    <div className="flex flex-col fixed bottom-4 text-sm">
+      <p className="text-center text-gray-600">© 2025 Gabriel Kazakevicius.</p>
+      <p className="text-center text-gray-600">Todos os Direitos Reservados</p>
+    </div>
+  </div>
+);
+
 };
 
 export default Contact;

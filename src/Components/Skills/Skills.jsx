@@ -103,7 +103,7 @@ const Skills = () => {
 
   {/* Linha 4 */}
   <div className='grid md:grid-cols-4 grid-cols-2 space-x-16 mt-5'>
-    <div className='flex items-center space-x-2'>
+    <div className='flex items-center space-x-2 pl-12'>
       <i className="devicon-mongodb-plain text-3xl filter dark:invert dark:brightness-200"></i>
       <p className='font-extralight text-2xl text-black dark:text-white'>NoSQL</p>
     </div>
@@ -111,13 +111,13 @@ const Skills = () => {
       <i className="devicon-mysql-plain text-3xl filter dark:invert dark:brightness-200"></i>
       <p className='font-extralight text-2xl text-black dark:text-white'>SQL</p>
     </div>
+    <div className='flex items-center space-x-2 pr-16'>
+      <i className="devicon-figma-plain text-3xl filter dark:invert dark:brightness-200"></i>
+      <p className='font-extralight text-2xl text-black dark:text-white'>Figma</p>
+    </div>
     <div className='flex items-center space-x-2'>
       <i className="devicon-prisma-plain text-3xl filter dark:invert dark:brightness-200"></i>
       <p className='font-extralight text-2xl text-black dark:text-white'>ORM</p>
-    </div>
-    <div className='flex items-center space-x-2'>
-      <i className="devicon-figma-plain text-3xl filter dark:invert dark:brightness-200"></i>
-      <p className='font-extralight text-2xl text-black dark:text-white'>Figma</p>
     </div>
   </div>
 
