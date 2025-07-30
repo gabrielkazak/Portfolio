@@ -51,11 +51,11 @@ const Projects = () => {
             src={pacman}
             alt=""
           />
-          <div className='hidden group-hover:flex justify-center space-x-5'>
+          <div className='hidden md:group-hover:flex justify-center space-x-5'>
             <p className='text-[8px] rounded-sm dark:bg-black dark:text-white p-1 bg-white text-black'>JavaScript</p>
             <p className='text-[8px] rounded-sm dark:bg-black dark:text-white p-1 bg-white text-black'>Inteligência Artificial</p>
           </div>
-          <p className='hidden group-hover:block w-[200px] pl-3 text-white dark:text-black'>Ferramenta educacional interativa para auxiliar no aprendizado de lógica de programação integrando desafios visuais e práticos inspirados no Pac-Man.</p>
+          <p className='hidden md:group-hover:block w-[200px] pl-3 text-white dark:text-black'>Ferramenta educacional interativa para auxiliar no aprendizado de lógica de programação integrando desafios visuais e práticos inspirados no Pac-Man.</p>
         </div>
 
         <div
@@ -73,12 +73,12 @@ const Projects = () => {
             src={controller}
             alt=""
           />
-          <div className='hidden group-hover:flex justify-center space-x-5'>
+          <div className='hidden md:group-hover:flex justify-center space-x-5'>
             <p className='text-[8px] rounded-sm dark:bg-black dark:text-white p-1 bg-white text-black'>NodeJS</p>
             <p className='text-[8px] rounded-sm dark:bg-black dark:text-white p-1 bg-white text-black'>React</p>
             <p className='text-[8px] rounded-sm dark:bg-black dark:text-white p-1 bg-white text-black'>PostgreSQL</p>
           </div>
-          <p className='hidden group-hover:block w-[200px] pl-3 text-white dark:text-black'>Catálogo de jogos digitais, utilizando API externa, onde o usuário pode fazer registros sobre seus jogos favoritos e planejar as próximas jogatinas.</p>
+          <p className='hidden md:group-hover:block w-[200px] pl-3 text-white dark:text-black'>Catálogo de jogos digitais, utilizando API externa, onde o usuário pode fazer registros sobre seus jogos favoritos e planejar as próximas jogatinas.</p>
         </div>
 
         <div
@@ -97,7 +97,7 @@ const Projects = () => {
             src={github}
             alt=""
           />
-          <p className='hidden group-hover:block w-[200px] pl-3 text-white dark:text-black'>Mais de 20 repositórios com os mais variados conteúdos. Jogos digitais, sites responsivos com consumo de APIs, servidores Backend, entre outros.</p>
+          <p className='hidden md:group-hover:block w-[200px] pl-3 text-white dark:text-black'>Mais de 20 repositórios com os mais variados conteúdos. Jogos digitais, sites responsivos com consumo de APIs, servidores Backend, entre outros.</p>
         </div>
       </div>
     </div>
