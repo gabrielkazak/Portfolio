@@ -5,7 +5,7 @@ const Contact = () => {
   const elementRef = useRef(null)
   const [isVisible, setIsVisible] = useState(true)
   
-    useEffect(() => {
+  useEffect(() => {
     const currentElement = elementRef.current;
     if (!currentElement) return;
 
@@ -34,7 +34,7 @@ const Contact = () => {
     const data = new FormData(form);
 
     try {
-      const response = await fetch('/', {
+      const response = await fetch('/api/submit', {
         method: 'POST',
         body: data,
       });
@@ -44,6 +44,8 @@ const Contact = () => {
         form.reset();
       } else {
         setSubmissionStatus('error');
+        const errorData = await response.json();
+        console.error('Erro na resposta do servidor:', errorData);
       }
     } catch (error) {
       console.error('Erro ao enviar o formulário:', error);
@@ -54,7 +56,7 @@ const Contact = () => {
   return (
     <div ref={elementRef} className={`h-screen w-full flex flex-col bg-white dark:bg-black items-center justify-center relative transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       <h2 className="text-5xl font-bold mb-6 text-center text-black dark:text-white">CONTATO</h2>
-      <form data-vercel-form onSubmit={handleSubmit}>
+      <form data-vercel-form action="/api/submit" method="POST" onSubmit={handleSubmit}>
         <div className="mb-4 lg:w-[800px] md:w-[550px] w-[300px]">
           <label htmlFor="name" className="block text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Nome:</label>
           <input
@@ -62,7 +64,7 @@ const Contact = () => {
             id="name"
             name="name"
             required
-            className="w-full p-3 rounded-full transition-colors duration-500 bg-white focus:bg-black border border-black focus:text-white dark:bg-black dark:border-white dark:focus:bg-white focus:outline-none focus:border-blue-500 dark:focus:text-black"
+            className="w-full p-3 rounded-full transition-colors duration-500 bg-white focus:bg-black border border-black focus:text-white dark:bg-black dark:border-white dark:text-white dark:focus:bg-white focus:outline-none focus:border-blue-500 dark:focus:text-black"
           />
         </div>
 
@@ -73,7 +75,7 @@ const Contact = () => {
             id="email"
             name="email"
             required
-            className="w-full p-3 rounded-full transition-colors duration-500 bg-white focus:bg-black border border-black focus:text-white dark:bg-black dark:border-white dark:focus:bg-white focus:outline-none focus:border-blue-500 dark:focus:text-black"
+            className="w-full p-3 rounded-full transition-colors duration-500 bg-white focus:bg-black border border-black focus:text-white dark:bg-black dark:border-white  dark:text-white dark:focus:bg-white focus:outline-none focus:border-blue-500 dark:focus:text-black"
           />
         </div>
 
@@ -84,7 +86,7 @@ const Contact = () => {
             name="message"
             rows="5"
             required
-            className="w-full p-3 rounded-md transition-colors duration-500 bg-white focus:bg-black border border-black focus:text-white dark:bg-black dark:border-white dark:focus:bg-white focus:outline-none focus:border-blue-500 dark:focus:text-black resize-none"
+            className="w-full p-3 rounded-md transition-colors duration-500 bg-white focus:bg-black border border-black focus:text-white dark:bg-black dark:border-white  dark:text-white dark:focus:bg-white focus:outline-none focus:border-blue-500 dark:focus:text-black resize-none"
           ></textarea>
         </div>
 
